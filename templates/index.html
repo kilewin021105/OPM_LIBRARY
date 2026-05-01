@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Harana Vault - Filipino Songs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-grid"></div>
+
+    <header class="nav">
+      <div class="logo">
+        <span class="logo-mark">HV</span>
+        <div class="logo-text">
+          <div class="logo-title">Harana Vault</div>
+          <div class="logo-sub">Filipino Songs Archive</div>
+        </div>
+      </div>
+      <div class="nav-actions">
+        <button class="pill">New Finds</button>
+        <button class="pill ghost">Submit a Song</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">A sonic postcard from the islands</p>
+          <h1>Filipino songs that glow, burn, and linger.</h1>
+          <p class="lead">
+            From kundiman to modern ballads, Harana Vault curates stories of
+            love, courage, and hometown dreams. Discover fresh playlists and the
+            classics that never fade.
+          </p>
+          <div class="hero-actions">
+            <button class="cta">Listen Now</button>
+            <button class="cta secondary">Browse by Era</button>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <span class="stat">240+</span>
+              <span class="stat-label">Songs tagged</span>
+            </div>
+            <div>
+              <span class="stat">12</span>
+              <span class="stat-label">Regions featured</span>
+            </div>
+            <div>
+              <span class="stat">4</span>
+              <span class="stat-label">Curated moods</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <div class="featured-card">
+            <div class="card-tag">Featured Playlist</div>
+            <h3>Harana After Dusk</h3>
+            <p>
+              Midnight serenades and slow-burn ballads. Ideal for city lights
+              and quiet walks.
+            </p>
+            <div class="card-meta">
+              <span>12 tracks</span>
+              <span>38 min</span>
+            </div>
+            <button class="cta small">Play mix</button>
+          </div>
+          <div class="vinyl">
+            <div class="vinyl-center"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="search-section">
+        <div>
+          <h2>Search the archive</h2>
+          <p>Type a title or artist. We will pull matches from Supabase.</p>
+        </div>
+        <div class="search-bar">
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="Try: Kundiman, Eraserheads, Buwan"
+          />
+          <button id="searchBtn" class="cta">Search</button>
+        </div>
+      </section>
+
+      <section class="songs-section">
+        <div class="section-head">
+          <h2>Signature tracks</h2>
+          <div class="filters">
+            <button class="pill ghost" data-filter="all">All</button>
+            <button class="pill ghost" data-filter="classic">Classic</button>
+            <button class="pill ghost" data-filter="modern">Modern</button>
+            <button class="pill ghost" data-filter="folk">Folk</button>
+          </div>
+        </div>
+        <div id="songGrid" class="song-grid"></div>
+      </section>
+
+      <section class="manage-section">
+        <div class="section-head">
+          <div>
+            <h2>Manage the archive</h2>
+            <p id="statusMessage" class="muted">
+              Add, edit, or delete songs in your Supabase table.
+            </p>
+          </div>
+          <button id="clearForm" class="pill ghost">Clear form</button>
+        </div>
+        <div class="manage-grid">
+          <form id="songForm" class="form-card">
+            <div class="form-grid">
+              <label>
+                Title
+                <input id="titleInput" type="text" required />
+              </label>
+              <label>
+                Artist
+                <input id="artistInput" type="text" required />
+              </label>
+              <label>
+                Era
+                <input
+                  id="eraInput"
+                  type="text"
+                  placeholder="Classic / Modern"
+                  required
+                />
+              </label>
+              <label>
+                Mood
+                <input
+                  id="moodInput"
+                  type="text"
+                  placeholder="Romantic / Moody"
+                  required
+                />
+              </label>
+              <label>
+                Spotify URL
+                <input
+                  id="spotifyInput"
+                  type="url"
+                  placeholder="https://open.spotify.com/..."
+                />
+              </label>
+              <label>
+                Image URL
+                <input id="imageInput" type="url" placeholder="https://..." />
+              </label>
+            </div>
+            <div class="form-actions">
+              <button id="submitBtn" class="cta" type="submit">
+                Create song
+              </button>
+              <button
+                id="deleteBtn"
+                class="cta secondary"
+                type="button"
+                disabled
+              >
+                Delete song
+              </button>
+            </div>
+          </form>
+          <div class="form-card">
+            <h3>Recent entries</h3>
+            <div id="manageList" class="manage-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <div>
+          <h2>Want your song featured?</h2>
+          <p>
+            Share your favorite Filipino track with a short story. Our curators
+            listen weekly.
+          </p>
+        </div>
+        <button class="cta secondary">Submit a track</button>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>
+        <span>Harana Vault</span>
+        <span class="dot">•</span>
+        <span>Built for Filipino music lovers</span>
+      </div>
+      <div>
+        <span>Supabase ready</span>
+        <span class="dot">•</span>
+        <span>Python Flask backend</span>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/static/js/app.js"></script>
+  </body>
+</html>
